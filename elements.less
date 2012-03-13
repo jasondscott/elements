@@ -10,7 +10,11 @@
 
     More info at: http://lesselements.com
 -----------------------------------------------------*/
-
+.clip(@type: padding-box) {
+    -webkit-background-clip: @type;
+    -moz-background-clip: @type;
+    background-clip: @type;
+}
 .gradient(@color: #F5F5F5, @start: #EEE, @stop: #FFF) {
   background: @color;
   background: -webkit-gradient(linear,
@@ -50,11 +54,31 @@
   -moz-box-shadow: @x-axis @y-axis @blur rgba(0, 0, 0, @alpha);
   box-shadow: @x-axis @y-axis @blur rgba(0, 0, 0, @alpha);
 }
-.rounded(@radius: 2px) {
+.rounded(@radius) {
   -webkit-border-radius: @radius;
   -moz-border-radius: @radius;
   border-radius: @radius;
   -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box; 
+}
+.rounded(topleft, @radii) {
+    -webkit-border-top-left-radius:  @radii;
+    -moz-border-radius-topleft:  @radii;
+    border-top-left-radius:  @radii;
+}
+.rounded(topright, @radii) {
+    -webkit-border-top-right-radius:  @radii;
+    -moz-border-radius-topright:  @radii;
+    border-top-right-radius:  @radii;
+}
+.rounded(bottomleft, @radii) {
+    -webkit-border-bottom-left-radius:  @radii;
+    -moz-border-radius-bottomleft:  @radii;
+    border-bottom-left-radius:  @radii;
+}
+.rounded(bottomright, @radii) {
+    -webkit-border-bottom-right-radius:  @radii;
+    -moz-border-radius-bottomright:  @radii;
+    border-bottom-right-radius:  @radii;
 }
 .border-radius(@topright: 0, @bottomright: 0, @bottomleft: 0, @topleft: 0) {
   -webkit-border-top-right-radius: @topright;
@@ -76,6 +100,7 @@
   -khtml-opacity: @opacity;
   -webkit-opacity: @opacity;
   opacity: @opacity;
+  filter: ~"alpha(opacity ="@opacity*100~")";
 }
 .transition-duration(@duration: 0.2s) {
   -moz-transition-duration: @duration;
@@ -102,7 +127,7 @@
   -moz-box-shadow: inset @horizontal @vertical @blur rgba(0, 0, 0, @alpha);
   box-shadow: inset @horizontal @vertical @blur rgba(0, 0, 0, @alpha);
 }
-.box-shadow(@arguments) {
+.box-shadow() {
   -webkit-box-shadow: @arguments;
   -moz-box-shadow: @arguments;
   box-shadow: @arguments;
